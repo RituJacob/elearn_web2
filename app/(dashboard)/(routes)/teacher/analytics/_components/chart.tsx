@@ -21,7 +21,7 @@ export const Chart = ({
   data
 }: ChartProps) => {
   return (
-    <Card>
+    <Card className="bg-slate-300">
       <ResponsiveContainer width="100%" height={350}>
         <BarChart data={data}>
           <XAxis

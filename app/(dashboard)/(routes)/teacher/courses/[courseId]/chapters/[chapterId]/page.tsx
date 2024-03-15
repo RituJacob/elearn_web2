@@ -9,7 +9,7 @@ import { Banner } from "@/components/banner";
 
 import { ChapterTitleForm } from "./_components/chapter-title-form";
 import { ChapterDescriptionForm } from "./_components/chapter-description-form";
-import { ChapterAccessForm } from "./_components/chapter-access-form";
+//import { ChapterAccessForm } from "./_components/chapter-access-form";
 import { ChapterVideoForm } from "./_components/chapter-video-form";
 import { ChapterActions } from "./_components/chapter-actions";
 
@@ -38,6 +38,17 @@ const ChapterIdPage = async ({
     return redirect("/")
   }
 
+  const course = await db.course.findUnique({
+    where: {
+      id: params.courseId
+    },
+    select:{
+      price:true
+    }
+  })
+
+  chapter.isFree = course?.price===0 || !course?.price;
+
   const requiredFields = [
     chapter.title,
     chapter.description,
@@ -46,7 +57,7 @@ const ChapterIdPage = async ({
 
   const totalFields = requiredFields.length;
   const completedFields = requiredFields.filter(Boolean).length;
-
+  
   const completionText = `(${completedFields}/${totalFields})`;
 
   const isComplete = requiredFields.every(Boolean);
@@ -114,11 +125,11 @@ const ChapterIdPage = async ({
                   Access Settings
                 </h2>
               </div>
-              <ChapterAccessForm
+              {/*<ChapterAccessForm
                 initialData={chapter}
                 courseId={params.courseId}
                 chapterId={params.chapterId}
-              />
+      />*/}
             </div>
           </div>
           <div>
