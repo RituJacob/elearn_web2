@@ -40,8 +40,7 @@ const ChapterIdPage = async ({
     return redirect("/")
   }
 
-
-  const isLocked = !chapter.isFree && !purchase;
+  const isLocked = course.price!==0 && !chapter.isFree && !purchase ;
   const completeOnEnd = !!purchase && !userProgress?.isCompleted;
 
   return ( 
@@ -52,7 +51,7 @@ const ChapterIdPage = async ({
           label="You already completed this chapter."
         />
       )}
-      {isLocked && (
+      {( isLocked)&&(
         <Banner
           variant="warning"
           label="You need to purchase this course to watch this chapter."
@@ -75,14 +74,15 @@ const ChapterIdPage = async ({
             <h2 className="text-2xl font-semibold mb-2">
               {chapter.title}
             </h2>
-            {purchase ? (
+            {(isLocked|| purchase || course.price===0 ) && (
               <CourseProgressButton
                 chapterId={params.chapterId}
                 courseId={params.courseId}
                 nextChapterId={nextChapter?.id}
                 isCompleted={!!userProgress?.isCompleted}
               />
-            ) : (
+            )} 
+            {!purchase && course.price !== 0 && !chapter.isFree &&(
               <CourseEnrollButton
                 courseId={params.courseId}
                 price={course.price!}

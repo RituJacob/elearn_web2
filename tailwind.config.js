@@ -9,6 +9,16 @@ module.exports = withUt({
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
 	],
+  /*theme: {
+    extend: {
+      colors: {
+        background: 'hsl(222.2, 84%, 4.9%)',
+        foreground: 'hsl(210, 40%, 98%)',
+        card: 'hsl(222.2, 84%, 4.9%)',
+        // Add more color definitions as needed
+      },
+    },
+  },*/
   theme: {
     container: {
       center: true,
@@ -22,8 +32,10 @@ module.exports = withUt({
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        /*background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",*/
+        background: 'hsl(222.2, 84%, 4.9%)',
+        foreground: 'hsl(210, 40%, 98%)',
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

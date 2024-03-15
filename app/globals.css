@@ -10,8 +10,10 @@ body,
  
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /*--background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;*/
+    --background: hsl(222.2, 84%, 4.9%); /* Dark blue background */
+  --foreground: hsl(210, 63%, 63%); /* Light gray foreground */
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;

@@ -17,7 +17,6 @@ model Course {
   imageUrl String? @db.Text
   price Float?
   isPublished Boolean @default(false)
-
   categoryId String?
   category Category? @relation(fields: [categoryId], references: [id])
 
@@ -59,9 +58,8 @@ model Chapter {
   videoUrl String? @db.Text
   position Int
   isPublished Boolean @default(false)
-  isFree Boolean @default(false)
-
   muxData MuxData?
+  isFree Boolean @default(false)
 
   courseId String
   course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
